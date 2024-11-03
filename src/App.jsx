@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <Router>
-      <Layout> {/* Envolvemos todas las rutas con Layout */}
+      <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={token ? <Profile /> : <Navigate to="/login" />} />
