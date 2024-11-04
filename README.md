@@ -24,7 +24,10 @@ Desactivar del botón "pagar" en Cart.jsx:
 
 Usa UserContext para desactivar el botón "pagar" si el token es false. 
 
-  
+  ![image](https://github.com/user-attachments/assets/a5869cb4-25c8-40d7-af65-f237e3b5e62b)
+  ![image](https://github.com/user-attachments/assets/f5dfcff3-9f43-4e08-afdb-7ac3acfd6591)
+
+
 
 Ruta protegida y redirecciones en App.jsx: 
 
