@@ -65,9 +65,9 @@ const Pizza = () => {
           
           {/* Botón de Añadir al carrito */}
           <div className="d-flex gap-2">
-            <Button variant="dark" onClick={() => addToCart(pizza.id)}>
-              <FontAwesomeIcon icon={faCartShopping} /> Añadir al carrito
-            </Button>
+          <Button variant="dark" onClick={() => addToCart(pizza)}>
+    <FontAwesomeIcon icon={faCartShopping} /> Añadir al carrito
+</Button>
             <Button variant="outline-dark" onClick={() => navigate("/")}>
               <FontAwesomeIcon icon={faArrowLeft} /> Ver nuestro menú
             </Button>

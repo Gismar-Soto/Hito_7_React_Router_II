@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom"; // Importa Link
 import { FaPizzaSlice, FaShoppingCart, FaEye } from "react-icons/fa";
 import { useCart } from '../components/CartContext';
 
@@ -63,9 +64,9 @@ const Home = () => {
                                 </div>
                                 <p className="pizza-price">Precio: ${pizza.price.toLocaleString('es-ES')}</p>
                                 <div className="d-flex justify-content-between">
-                                    <button className="btn btn-outline-secondary">
+                                    <Link to={`/pizza/${pizza.id}`} className="btn btn-outline-secondary">
                                         Ver Más <FaEye />
-                                    </button>
+                                    </Link>
                                     <button
                                         className="btn btn-dark"
                                         onClick={() => addToCart(pizza)} // addToCart contex
