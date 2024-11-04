@@ -5,10 +5,10 @@ import Footer from './Footer';
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <div className="layout-container">
       <Navbar />
       <Header />
-      <main>{children}</main> {/* Aquí se renderizan las rutas */}
+      <main className="main-content">{children}</main> 
       <Footer />
     </div>
   );

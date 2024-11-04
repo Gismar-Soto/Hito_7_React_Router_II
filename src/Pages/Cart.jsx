@@ -39,9 +39,9 @@ const Cart = () => {
             </ul>
             <div className="mt-4 text-end">
               <h4>Total a pagar: ${total.toLocaleString('es-ES')}</h4>
-              <button className="btn btn-success mt-2" disabled={!token}>
-                <FontAwesomeIcon icon={faCreditCard} className="me-2" /> Pagar
-              </button>
+              <button className="btn btn-success mt-2 mb-2" disabled={!token}>
+  <FontAwesomeIcon icon={faCreditCard} className="me-2" /> Pagar
+</button>
             </div>
           </div>
         )}
