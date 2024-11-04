@@ -72,7 +72,9 @@ const Register = () => {
           />
           {errors.confirmPassword && <small className="text-danger">{errors.confirmPassword}</small>}
         </div>
-        <button type="submit" className="btn btn-primary mt-3">
+        <button type="submit"
+  className="btn btn-primary mt-3"
+  style={{ marginTop: '50px', marginBottom: '50px' }}>
           Registrarse
         </button>
       </form>

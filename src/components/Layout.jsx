@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
   return (
     <div>
       <Navbar />
-      <Header /> {/* Asegura que el Header esté en la parte superior de todas las páginas */}
+      <Header />
       <main>{children}</main> {/* Aquí se renderizan las rutas */}
       <Footer />
     </div>
