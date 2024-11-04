@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 
 const Profile = () => {
-  const userEmail = 'usuario@eemplo.com';  
+  const userEmail = 'usuario@ejemplo.com';  
 
   return (
     <Container style={{ marginTop: '50px', marginBottom: '50px' }}>
