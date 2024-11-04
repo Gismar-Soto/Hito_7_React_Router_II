@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";  
+import { useParams, useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping, faArrowLeft, faPizzaSlice } from "@fortawesome/free-solid-svg-icons";
+import { useCart } from "../components/CartContext";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Pizza = () => {
   const [pizza, setPizza] = useState(null);
-  const { id } = useParams();  // Obtenemos el ID de la pizza desde la URL
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { addToCart } = useCart(); // Importamos addToCart del contexto del carrito
 
   useEffect(() => {
-    // Llamada a la API para obtener la pizza con el ID especificado
     fetch(`http://localhost:5001/api/pizzas/${id}`)
       .then((response) => {
         if (!response.ok) {
@@ -15,28 +21,59 @@ const Pizza = () => {
         return response.json();
       })
       .then((data) => {
-        setPizza(data);  // Guardamos la pizza en el estado
+        setPizza(data);
       })
       .catch((error) => {
         console.error("Error fetching pizza:", error);
       });
   }, [id]);
 
-  if (!pizza) return <p>Cargando pizza...</p>; // Si no hay pizza, mostramos un mensaje
+  if (!pizza) return <p>Cargando pizza...</p>;
 
   return (
-    <div className="container">
-      <h1>{pizza.name}</h1>
-      <img src={pizza.image} alt={pizza.name} className="pizza-img" />
-      <p className="pizza-price">${pizza.price}</p>
-      <p>Ingredientes:</p>
-      <ul className="pizza-ingredients-list">
-        {pizza.ingredients.map((ingredient, index) => (
-          <li key={index}>{ingredient}</li>
-        ))}
-      </ul>
-      {/* Botón para añadir */}
-      <button className="pizza-btn pizza-btn-dark">Añadir al carrito</button>
+    <div className="container my-5 p-4 rounded" style={{ backgroundColor: "#e8e8e8" }}>
+      <div className="row align-items-center">
+        {/* Imagen de la pizza */}
+        <div className="col-md-6 text-center">
+          <img
+            src={pizza.img}
+            alt={pizza.name}
+            className="img-fluid rounded"
+            style={{ maxWidth: "100%", borderRadius: "8px" }}
+          />
+        </div>
+
+        {/* Detalles de la pizza */}
+        <div className="col-md-6">
+          <h2 className="fw-bold mb-3">{pizza.name}</h2>
+          <p>{pizza.desc}</p>
+          
+          {/* Encabezado de Ingredientes con icono */}
+          <h5 className="fw-bold mt-4">
+            <FontAwesomeIcon icon={faPizzaSlice} style={{ color: "orange" }} className="me-2" />
+            Ingredientes:
+          </h5>
+          <ul className="list-unstyled">
+            {pizza.ingredients.map((ingredient, index) => (
+              <li key={index} className="mb-1">
+                • {ingredient}
+              </li>
+            ))}
+          </ul>
+
+          <p className="fw-bold mb-4" style={{ fontSize: "1.2rem" }}>Precio: ${pizza.price.toLocaleString('es-ES')}</p>
+          
+          {/* Botón de Añadir al carrito */}
+          <div className="d-flex gap-2">
+            <Button variant="dark" onClick={() => addToCart(pizza.id)}>
+              <FontAwesomeIcon icon={faCartShopping} /> Añadir al carrito
+            </Button>
+            <Button variant="outline-dark" onClick={() => navigate("/")}>
+              <FontAwesomeIcon icon={faArrowLeft} /> Ver nuestro menú
+            </Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
